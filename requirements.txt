@@ -1,0 +1,6 @@
+google-cloud-bigquery
+db-dtypes
+dotenv
+google
+ast
+os
