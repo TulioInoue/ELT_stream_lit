@@ -2,13 +2,13 @@ from google.cloud import bigquery
 from datetime import datetime, timedelta
 from google.oauth2 import service_account
 
-from dotenv import load_dotenv
+# from dotenv import load_dotenv
 import os
 
 def get_database(date):
 
-    load_dotenv()
-    
+    # load_dotenv()
+
     type = os.getenv("type")
     project_id = os.getenv("project_id")
     private_key_id = os.getenv("private_key_id")
