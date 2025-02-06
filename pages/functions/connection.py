@@ -4,22 +4,38 @@ from google.oauth2 import service_account
 
 from dotenv import load_dotenv
 import os
-import ast
 
 def get_database(date):
 
-    load_dotenv()  # Carrega as variáveis do .env
-    google_cred_path = os.getenv("GOOGLE_APPLICATION_CREDENTIALS")
-
-    print("google_cred_path:", google_cred_path)
-
-    credential = ast.literal_eval(google_cred_path)
-
-    print("credential:", credential, type(credential))
+    load_dotenv()
+    
+    type = os.getenv("type")
+    project_id = os.getenv("project_id")
+    private_key_id = os.getenv("private_key_id")
+    private_key = os.getenv("private_key")
+    client_email = os.getenv("client_email")
+    client_id = os.getenv("client_id")
+    auth_uri = os.getenv("auth_uri")
+    token_uri = os.getenv("token_uri")
+    auth_provider_x509_cert_url = os.getenv("auth_provider_x509_cert_url")
+    client_x509_cert_url = os.getenv("client_x509_cert_url")
+    universe_domain = os.getenv("universe_domain")
 
     client = bigquery.Client(
         credentials = service_account.Credentials.from_service_account_info(
-            credential
+            {
+                "type": type,
+                "project_id": project_id,
+                "private_key_id": private_key_id,
+                "private_key": private_key,
+                "client_email": client_email,
+                "client_id": client_id,
+                "auth_uri": auth_uri,
+                "token_uri": token_uri,
+                "auth_provider_x509_cert_url": auth_provider_x509_cert_url,
+                "client_x509_cert_url": client_x509_cert_url,
+                "universe_domain": universe_domain
+            }
         )
     )
 
