@@ -1,5 +1,4 @@
 google-cloud-bigquery
 db-dtypes
 google
-ast
 os
